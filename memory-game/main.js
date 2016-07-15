@@ -1,27 +1,48 @@
-console.log("JS file is connected to HTML! Woo!")
+var cards = ['queen', 'queen', 'king', 'king'];
 
-var cardOne ="queen";
-var cardTwo ="king";
-var cardThree ="king";
-var cardFour ="queen";
+var cardsInPlay = [];
 
-/* If cardOne=cardTwo return alert "Sorry you didn't get a match"*/
-/* If cardOne=cardThree return alert "Sorry you didn't get a match"*/
-/* If cardOne=cardFour return alert "You got a match!"*/
-/* If cardTwo=cardThree return alert "You got a match!"*/
-/* If cardTwo=cardFour return alert "Sorry you didn't get a match"*/
-/* If cardThree=cardFour return alert "Sorry you didn't get a match"*/
+function createBoard() {
 
-if (cardOne===cardTwo) {
-	alert ("Sorry you didn't get a match");
-}	else if (cardOne === cardThree) {
-	alert ("Sorry you didn't get a match");
-}	else if (cardOne === cardFour) {
-	alert ("You got a match");
-}	else if (cardTwo === cardThree) {
-	alert ("You got a match");
-}	else if (cardTwo === cardFour) {
-	alert ("Sorry you didn't get a match");
-}	else if (cardThree === cardFour) {
-	alert ("Sorry you didn't get a match");
-}	
+for (var i=0; i<cards.length; i++) {
+    var cardElement = document.createElement('div');
+    cardElement.className = 'card';
+    cardElement.setAttribute('data-card', cards[i]);
+
+ cardElement.addEventListener('click', isTwoCards);
+
+    board.appendChild(cardElement.innerHTML = '<img src="my_king.png" alt="King of Spades" />');
+  }
+
+}
+
+function isMatch(cards) {
+
+  if (cards[0] === cards[1]) {
+
+    alert("You found a match!");
+
+  }
+
+  else {
+
+    alert("Sorry, try again.");
+
+  }
+
+
+function isTwoCards() {
+
+  cardsInPlay.push(this.getAttribute('data-card'));
+
+  if (cardsInPlay.length === 2) {
+
+    isMatch(cardsInPlay);
+
+    cardsInPlay = [];
+
+  }
+}
+  }
+
+createBoard();
